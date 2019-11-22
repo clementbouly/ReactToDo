@@ -1,13 +1,16 @@
 .App {
   text-align: center;
+  background-color: #222d44;
+  
 }
 
-.App-logo {
-  height: 40vmin;
+.App-title>h1 {
+  font-family: VeganStyle;
+  font-size: 4em;
+  margin-bottom: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
+.App-body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,6 +20,35 @@
   color: white;
 }
 
+.App-tasks {
+  min-width: 380px;
+  cursor: pointer;
+}
+
+.task {
+  color: black;
+  transition: color 0.5s;
+}
+
+.deleteTask{
+  font-size: 1.5em!important;
+  color: rgb(235, 68, 68);
+}
+
+.deleteTask:hover{
+  font-size: 1.6em!important;
+  color: red;
+}
+
+.validated {
+  text-decoration: line-through;
+  color: #cdcdcd;
+}
+
 .App-link {
   color: #09d3ac;
 }
+
+.inputTask:not(:focus) {
+  font-style:italic;
+  }
