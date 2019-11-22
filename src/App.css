@@ -1,10 +1,9 @@
 .App {
   text-align: center;
   background-color: #222d44;
-  
 }
 
-.App-title>h1 {
+.App-title > h1 {
   font-family: VeganStyle;
   font-size: 4em;
   margin-bottom: 15px;
@@ -21,7 +20,7 @@
 }
 
 .App-tasks {
-  min-width: 380px;
+  min-width: 420px;
   cursor: pointer;
 }
 
@@ -30,13 +29,13 @@
   transition: color 0.5s;
 }
 
-.deleteTask{
-  font-size: 1.5em!important;
+.deleteTask {
+  font-size: 1.5em !important;
   color: rgb(235, 68, 68);
 }
 
-.deleteTask:hover{
-  font-size: 1.6em!important;
+.deleteTask:hover {
+  font-size: 1.6em !important;
   color: red;
 }
 
@@ -50,5 +49,14 @@
 }
 
 .inputTask:not(:focus) {
-  font-style:italic;
-  }
+  font-style: italic;
+}
+
+.inputTask {
+  padding: 10px;
+}
+
+.addTask{
+  padding: 9px!important;
+  font-size: 1em!important;
+}

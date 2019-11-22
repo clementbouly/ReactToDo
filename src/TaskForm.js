@@ -27,7 +27,7 @@ class TaskForm extends Component {
           className="inputTask"
           placeholder="What to do ?"
         />
-        <button onClick={this.handleSubmit} className="btn btn-success ml-2 mb-1">
+        <button onClick={this.handleSubmit} className="addTask btn btn-success ml-2 mb-1">
           Confirm
         </button>
       </form>
