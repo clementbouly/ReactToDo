@@ -49,13 +49,19 @@ class App extends React.Component {
           <div className="App-title">
             <h1>To Do list : </h1>
           </div>
-          <TaskForm onTaskAdd={this.handleAdd} />
-          <div className="App-tasks mt-3">
-            <ul className="list-group list-group-flush ">
-              {this.state.tasks.map(task => (
-                <Task key={task.id} task={task} onDelete={this.handleDelete} />
-              ))}
-            </ul>
+          <div className="content">
+            <TaskForm onTaskAdd={this.handleAdd} />
+            <div className="App-tasks mt-3">
+              <ul className="list-group list-group-flush ">
+                {this.state.tasks.map(task => (
+                  <Task
+                    key={task.id}
+                    task={task}
+                    onDelete={this.handleDelete}
+                  />
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
