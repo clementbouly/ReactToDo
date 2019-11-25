@@ -8,7 +8,7 @@ import TaskForm from "./TaskForm";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state.compteur = this.state.tasks.length;
+    this.state.taskCount = this.state.tasks.length;
   }
   state = {
     tasks: [
@@ -16,7 +16,7 @@ class App extends React.Component {
       { id: 2, content: "manger une pomme", completed: false },
       { id: 3, content: "manger une carotte", completed: false }
     ],
-    compteur: 0
+    taskCount: 0
   };
 
   handleDelete = id => {
@@ -24,7 +24,7 @@ class App extends React.Component {
 
     this.setState({
       tasks: tasks.filter(task => task.id !== id),
-      compteur: this.state.compteur - 1
+      taskCount: this.state.taskCount - 1
     });
   };
 
@@ -34,7 +34,7 @@ class App extends React.Component {
 
     this.setState({
       tasks,
-      compteur: this.state.compteur + 1
+      taskCount: this.state.taskCount + 1
     });
   };
 
@@ -69,7 +69,7 @@ class App extends React.Component {
           <div className="App-title">
             <h1>
               To Do list :
-              <span className="countTask">{this.state.compteur}</span>
+              <span className="countTask">{this.state.taskCount}</span>
             </h1>
           </div>
           <div className="content">
