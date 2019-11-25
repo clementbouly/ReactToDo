@@ -47,10 +47,18 @@ class App extends React.Component {
       <div className="App">
         <div className="App-body">
           <div className="App-title">
-            <h1>To Do list : </h1>
+            <h1>
+              To Do list :
+              <span className="countTask">{this.state.compteur}</span>
+            </h1>
           </div>
           <div className="content">
             <TaskForm onTaskAdd={this.handleAdd} />
+            <div className="btn-group btn-group-toggle filterBar mt-1 p-2" data-toggle="buttons"> 
+              <button className="btn btn-secondary mr-2 filterAll" onClick={()=>{console.log("Filter All")}}>All</button>
+              <button className="btn btn-secondary mr-2 filterAll">Active</button>
+              <button className="btn btn-secondary mr-2 filterAll">Completed</button>
+            </div>
             <div className="App-tasks mt-3">
               <ul className="list-group list-group-flush ">
                 {this.state.tasks.map(task => (
