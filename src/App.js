@@ -12,9 +12,9 @@ class App extends React.Component {
   }
   state = {
     tasks: [
-      { id: 1, content: "coder en react avec le sourire" },
-      { id: 2, content: "manger une pomme" },
-      { id: 3, content: "manger une carotte" }
+      { id: 1, content: "coder en react avec le sourire", completed: false },
+      { id: 2, content: "manger une pomme", completed: false },
+      { id: 3, content: "manger une carotte", completed: false }
     ],
     compteur: 0
   };
@@ -38,9 +38,29 @@ class App extends React.Component {
     });
   };
 
-  setToDoNumber() {
-    this.setState({ compteur: this.state.tasks.length });
-  }
+  filterBy = param => {
+    const tasks = [...this.state.tasks];
+
+    switch (param) {
+      case "all":
+        //do something
+        break;
+      case "active":
+        //do something
+        break;
+      default:
+    }
+  };
+
+  completeTask = id => {
+    const tasks = [...this.state.tasks];
+    const index = tasks.findIndex(task => task.id === id);
+    tasks[index].completed = !this.state.tasks[index].completed;
+
+    this.setState({
+      tasks: tasks
+    });
+  };
 
   render() {
     return (
@@ -54,10 +74,25 @@ class App extends React.Component {
           </div>
           <div className="content">
             <TaskForm onTaskAdd={this.handleAdd} />
-            <div className="btn-group btn-group-toggle filterBar mt-1 p-2" data-toggle="buttons"> 
-              <button className="btn btn-secondary mr-2 filterAll" onClick={()=>{console.log("Filter All")}}>All</button>
-              <button className="btn btn-secondary mr-2 filterAll">Active</button>
-              <button className="btn btn-secondary mr-2 filterAll">Completed</button>
+            <div
+              className="btn-group btn-group-toggle filterBar mt-1 p-2"
+              data-toggle="buttons"
+            >
+              <button
+                className="btn btn-secondary mr-2 filterAll"
+                onClick={() => this.filterBy("all")}
+              >
+                All
+              </button>
+              <button
+                className="btn btn-secondary mr-2 filterAll"
+                onClick={() => this.filterBy("active")}
+              >
+                Active
+              </button>
+              <button className="btn btn-secondary mr-2 filterAll">
+                Completed
+              </button>
             </div>
             <div className="App-tasks mt-3">
               <ul className="list-group list-group-flush ">
@@ -66,6 +101,7 @@ class App extends React.Component {
                     key={task.id}
                     task={task}
                     onDelete={this.handleDelete}
+                    onComplete={this.completeTask}
                   />
                 ))}
               </ul>

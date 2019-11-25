@@ -51,7 +51,7 @@
   color: red;
 }
 
-.validated {
+.completed {
   text-decoration: line-through;
   color: #cdcdcd;
 }

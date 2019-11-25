@@ -13,7 +13,8 @@ class TaskForm extends Component {
     event.preventDefault();
     const id = new Date().getTime();
     const content = this.state.newContent;
-    this.props.onTaskAdd({ id, content });
+    const completed = false;
+    this.props.onTaskAdd({ id, content, completed });
     this.setState({newContent : ""})
   };
 

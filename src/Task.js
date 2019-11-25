@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // class Task extends Component {
 //   state = {
@@ -32,20 +32,15 @@ import React, { useState } from "react";
 //   }
 // }
 
-const Task = ({ task, onDelete }) => {
-  const [isValidated, setValidation] = useState(false);
-
-  const toggleTask = () => {
-    setValidation(!isValidated);
-  };
-
+const Task = ({ task, onDelete, onComplete }) => {
   return (
     <li
       key={task.id}
-      onClick={toggleTask}
-      className={`task list-group-item my-1 ${isValidated ? " validated" : ""}`}
+      className={`task list-group-item my-1 ${
+        task.completed ? " completed" : ""
+      }`}
     >
-      {task.content}
+      <span onClick={() => onComplete(task.id)}>{task.content}</span>
       <i
         className="deleteTask fa fa-times float-right ml-3"
         onClick={() => onDelete(task.id)}
