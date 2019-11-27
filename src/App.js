@@ -4,51 +4,59 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
+import FilterTask from "./FilterTask.component";
 
 const App = () => {
+  const filterNames = ["all", "active", "completed", "empty"];
+  const [predicate, setPredicate] = useState(() => () => true);
   const [tasks, setTasks] = useState([
     { id: 1, content: "coder en react avec le sourire", completed: false },
     { id: 2, content: "manger une pomme", completed: false },
     { id: 3, content: "manger une carotte", completed: false }
   ]);
-  const [taskCount, setTaskCount] = useState(3);
 
-  const handleDelete = id => {
-    const updatedTasks = [...tasks];
-    console.log(tasks);
-
-    setTasks(updatedTasks.filter(task => task.id !== id));
-    setTaskCount(taskCount-1)
+  const handleDelete = ({id}) => {
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
-  const handleAdd = task => {
-    const updatedTasks = [...tasks];
-    updatedTasks.push(task);
+  function handleAdd(task) {
+    setTasks([...tasks, task]);
+  }
 
-    setTasks(updatedTasks);
-    setTaskCount(taskCount+1)
-  };
+  function handleEdition({id, content}) {
+    setTasks(
+      tasks.map(task =>
+        task.id === id
+          ? { ...task, content }
+          : task
+      )
+    );
+  }
 
   const filterBy = param => {
-    const tasks = [...tasks];
-
     switch (param) {
       case "all":
-        //do something
+        setPredicate(() => () => true);
         break;
       case "active":
-        //do something
+        setPredicate(() => task => !task.completed);
+        break;
+      case "completed":
+        setPredicate(() => task => task.completed);
+        break;
+      case "empty":
+        setPredicate(() => task => task.content === "");
         break;
       default:
     }
   };
 
-  const completeTask = id => {
-    const updatedTasks = [...tasks];
-    const index = updatedTasks.findIndex(task => task.id === id);
-    updatedTasks[index].completed = !updatedTasks[index].completed;
-
-    setTasks(updatedTasks);
+  const toggleCompletion = id => {
+    setTasks(
+      tasks.map(task =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   return (
@@ -56,7 +64,7 @@ const App = () => {
       <div className="App-body">
         <div className="App-title">
           <h1>
-            To Do list :<span className="countTask">{taskCount}</span>
+            To Do list :<span className="countTask">{tasks.length}</span>
           </h1>
         </div>
         <div className="content">
@@ -65,30 +73,23 @@ const App = () => {
             className="btn-group btn-group-toggle filterBar mt-1 p-2"
             data-toggle="buttons"
           >
-            <button
-              className="btn btn-secondary mr-2 filterAll"
-              onClick={() => filterBy("all")}
-            >
-              All
-            </button>
-            <button
-              className="btn btn-secondary mr-2 filterAll"
-              onClick={() => filterBy("active")}
-            >
-              Active
-            </button>
-            <button className="btn btn-secondary mr-2 filterAll">
-              Completed
-            </button>
+            {filterNames.map((filterName) => (
+              <FilterTask
+                filterName={filterName}
+                onFilter={filterBy}
+                key={filterName}
+              ></FilterTask>
+            ))}
           </div>
           <div className="App-tasks mt-3">
             <ul className="list-group list-group-flush ">
-              {tasks.map(task => (
+              {tasks.filter(predicate).map(task => (
                 <Task
                   key={task.id}
                   task={task}
                   onDelete={handleDelete}
-                  onComplete={completeTask}
+                  onComplete={toggleCompletion}
+                  onTaskEdition={handleEdition}
                 />
               ))}
             </ul>

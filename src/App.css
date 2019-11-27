@@ -72,3 +72,8 @@
   padding: 9px!important;
   font-size: 1em!important;
 }
+
+.edition{
+  position: relative;
+  float: left;
+}
