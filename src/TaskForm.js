@@ -1,4 +1,15 @@
 import React, { useState } from "react";
+import styled from "@emotion/styled";
+
+// *** CSS *** //
+const TaskInput = styled.input`
+  padding: 10px;
+  
+  :not(:focus) {
+    font-style: italic;
+  }
+`;
+// *** end CSS *** //
 
 function TaskForm({ onTaskAdd }) {
   const [newContent, setNewContent] = useState("");
@@ -18,11 +29,10 @@ function TaskForm({ onTaskAdd }) {
 
   return (
     <form>
-      <input
+      <TaskInput
         value={newContent}
         onChange={handleChange}
         type="text"
-        className="inputTask"
         placeholder="What to do ?"
       />
       <button

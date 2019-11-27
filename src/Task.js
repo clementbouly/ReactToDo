@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import styled from "@emotion/styled";
+import {DeleteIcon, TaskList} from "./style"
+
+// *** CSS *** //
+
+// *** end CSS *** //
 
 function Task({ task, onDelete, onComplete, onTaskEdition }) {
   const [editedContent, setEditedContent] = useState(task.content);
@@ -9,37 +15,31 @@ function Task({ task, onDelete, onComplete, onTaskEdition }) {
   }
 
   function handleSubmit(event) {
-    console.log("toto");
     event.preventDefault();
     const content = editedContent;
     onTaskEdition({ id: task.id, content, completed: task.completed });
     setIsEdited(false);
   }
   return (
-    <li
+    <TaskList
+      completed={task.completed}
       key={task.id}
       onDoubleClick={() => setIsEdited(!isEdited)}
-      className={`task list-group-item my-1 ${
-        task.completed ? " completed" : ""
-      }`}
+      className="list-group-item my-1"
     >
       {isEdited && (
         <form onSubmit={handleSubmit} className="edition">
-          <input
-            value={editedContent}
-            onChange={handleChange}
-          />
+          <input value={editedContent} onChange={handleChange} />
         </form>
       )}
       {!isEdited && (
-        <span onClick={() => onComplete(task.id)}>{task.content}</span>
+        <span onClick={() => onComplete(task)}>{task.content}</span>
       )}
-
-      <i
-        className="deleteTask fa fa-times float-right ml-3"
+      <DeleteIcon
+        className="fa fa-times float-right ml-3"
         onClick={() => onDelete(task)}
-      ></i>
-    </li>
+      ></DeleteIcon>
+    </TaskList>
   );
 }
 

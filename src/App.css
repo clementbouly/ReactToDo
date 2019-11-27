@@ -30,44 +30,6 @@
   margin-left: 0.5em;
 }
 
-.filterBar{
-  background: rgb(42, 55, 83);  
-  border-radius: 5px;
-  width: 100%;
-}
-
-.task {
-  color: black;
-  transition: color 0.5s;
-}
-
-.deleteTask {
-  font-size: 1.5em !important;
-  color: rgb(235, 68, 68);
-}
-
-.deleteTask:hover {
-  font-size: 1.6em !important;
-  color: red;
-}
-
-.completed {
-  text-decoration: line-through;
-  color: #cdcdcd;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-.inputTask:not(:focus) {
-  font-style: italic;
-}
-
-.inputTask {
-  padding: 10px;
-}
-
 .addTask{
   padding: 9px!important;
   font-size: 1em!important;
@@ -76,4 +38,5 @@
 .edition{
   position: relative;
   float: left;
+  left: 20px;
 }

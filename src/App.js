@@ -5,6 +5,14 @@ import "../node_modules/font-awesome/css/font-awesome.min.css";
 import Task from "./Task";
 import TaskForm from "./TaskForm";
 import FilterTask from "./FilterTask.component";
+import styled from "@emotion/styled";
+
+const FilterBar = styled.div`
+  background: rgb(42, 55, 83);  
+  border-radius: 5px;
+  width: 100%;
+`;
+
 
 const App = () => {
   const filterNames = ["all", "active", "completed", "empty"];
@@ -51,7 +59,7 @@ const App = () => {
     }
   };
 
-  const toggleCompletion = id => {
+  const toggleCompletion = ({id}) => {
     setTasks(
       tasks.map(task =>
         task.id === id ? { ...task, completed: !task.completed } : task
@@ -69,8 +77,8 @@ const App = () => {
         </div>
         <div className="content">
           <TaskForm onTaskAdd={handleAdd} />
-          <div
-            className="btn-group btn-group-toggle filterBar mt-1 p-2"
+          <FilterBar
+            className="btn-group btn-group-toggle mt-1 p-2"
             data-toggle="buttons"
           >
             {filterNames.map((filterName) => (
@@ -80,7 +88,7 @@ const App = () => {
                 key={filterName}
               ></FilterTask>
             ))}
-          </div>
+          </FilterBar>
           <div className="App-tasks mt-3">
             <ul className="list-group list-group-flush ">
               {tasks.filter(predicate).map(task => (
