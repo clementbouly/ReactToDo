@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.11.2"
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@types/jest": "^24.0.23"
   }
 }

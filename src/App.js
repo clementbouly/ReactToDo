@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
-import Task from "./Task";
-import TaskForm from "./TaskForm";
-import FilterTask from "./FilterTask.component";
+import Task from "./Tasks/Task.component";
+import TaskForm from "./Tasks/TaskForm.component";
+import FilterTask from "./Tasks/FilterTask.component";
 import styled from "@emotion/styled";
 
 const FilterBar = styled.div`

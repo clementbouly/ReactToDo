@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
-import {DeleteIcon, TaskList} from "./style"
+import {DeleteIcon, TaskList} from "../style"
 
-// *** CSS *** //
-
-// *** end CSS *** //
 
 function Task({ task, onDelete, onComplete, onTaskEdition }) {
   const [editedContent, setEditedContent] = useState(task.content);
