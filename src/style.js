@@ -12,7 +12,7 @@ const DeleteIcon = styled.i`
 
 const TaskList = styled.li`
   color: ${props => (props.completed ? "#cdcdcd" : "black")};
-  transition: color 0.5s;
+  transition: color 0.4s;
   text-decoration: ${props => (props.completed ? "line-through" : "none")};
   border-radius : 5px!important;
 
