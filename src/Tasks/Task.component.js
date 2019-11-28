@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import {DeleteIcon, TaskList} from "../style"
-
+import { DeleteIcon, TaskList } from "../style";
 
 function Task({ task, onDelete, onComplete, onTaskEdition }) {
   const [editedContent, setEditedContent] = useState(task.content);

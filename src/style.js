@@ -14,6 +14,7 @@ const TaskList = styled.li`
   color: ${props => (props.completed ? "#cdcdcd" : "black")};
   transition: color 0.5s;
   text-decoration: ${props => (props.completed ? "line-through" : "none")};
+  border-radius : 5px!important;
 
   :hover {
     background: rgb(238, 238, 238);
