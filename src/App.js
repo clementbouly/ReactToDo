@@ -42,6 +42,7 @@ const App = () => {
     );
   }
 
+  /* Filtre les taches */
   const filterBy = param => {
     switch (param) {
       case "all":
