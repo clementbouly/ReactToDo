@@ -24,6 +24,8 @@ const App = () => {
   ]);
 
   const handleDelete = ({id}) => {
+    console.log("TEST 3");
+
     setTasks(tasks.filter(task => task.id !== id));
   };
 
@@ -44,6 +46,8 @@ const App = () => {
 
   /* Filtre les taches */
   const filterBy = param => {
+    console.log("TEST");
+
     switch (param) {
       case "all":
         setPredicate(() => () => true);
@@ -62,6 +66,7 @@ const App = () => {
   };
 
   const toggleCompletion = ({id}) => {
+    console.log("TEST 3");
     setTasks(
       tasks.map(task =>
         task.id === id ? { ...task, completed: !task.completed } : task
