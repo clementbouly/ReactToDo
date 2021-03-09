@@ -10,10 +10,13 @@ function Task({ task, onDelete, onComplete, onTaskEdition }) {
   }
 
   function handleSubmit(event) {
+    console.log('changement dans task component :>> ');
     event.preventDefault();
     const content = editedContent;
     onTaskEdition({ id: task.id, content, completed: task.completed });
     setIsEdited(false);
+    console.log('ENCORE DU changement dans task component :>> ');
+
   }
   return (
     <TaskList
