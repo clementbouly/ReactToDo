@@ -27,6 +27,7 @@ const App = () => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
+  /* Ajoute une tache */
   function handleAdd(task) {
     setTasks([...tasks, task]);
   }
