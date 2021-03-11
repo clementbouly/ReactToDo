@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DeleteIcon, TaskList } from "../style";
+import { DeleteIcon, TaskList , EditIcon} from "../style";
 
 function Task({ task, onDelete, onComplete, onTaskEdition }) {
   const [editedContent, setEditedContent] = useState(task.content);
@@ -11,8 +11,7 @@ function Task({ task, onDelete, onComplete, onTaskEdition }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const content = editedContent;
-    onTaskEdition({ id: task.id, content, completed: task.completed });
+    onTaskEdition({...task, content: editedContent});
     setIsEdited(false);
   }
   return (
@@ -23,17 +22,27 @@ function Task({ task, onDelete, onComplete, onTaskEdition }) {
       className="list-group-item my-1"
     >
       {isEdited && (
-        <form onSubmit={handleSubmit} className="edition">
-          <input value={editedContent} onChange={handleChange} />
-        </form>
+        <div>
+          <form onSubmit={handleSubmit} className="edition">
+            <input value={editedContent} onChange={handleChange} />
+            <EditIcon
+              className="fa fa-pencil float-right ml-3"
+              type="submit">      
+            </EditIcon>
+          </form>
+          
+      </div>
       )}
       {!isEdited && (
-        <span onClick={() => onComplete(task)}>{task.content}</span>
+        <div>
+          <span onClick={() => onComplete(task)}>{task.content}</span>
+          <DeleteIcon
+            className="fa fa-times float-right ml-3"
+            onClick={() => onDelete(task)}>
+          </DeleteIcon>
+      </div>
       )}
-      <DeleteIcon
-        className="fa fa-times float-right ml-3"
-        onClick={() => onDelete(task)}
-      ></DeleteIcon>
+      
     </TaskList>
   );
 }

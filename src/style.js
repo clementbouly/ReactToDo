@@ -10,6 +10,13 @@ const DeleteIcon = styled.i`
   }
 `;
 
+const EditIcon = styled.button`
+  font-size: 1.5em !important;
+  color: green;
+  border: none;
+  background: none;
+`;
+
 const TaskList = styled.li`
   color: ${props => (props.completed ? "#cdcdcd" : "black")};
   transition: color 0.4s;
@@ -23,5 +30,6 @@ const TaskList = styled.li`
 
 export {
     DeleteIcon,
-    TaskList
+    TaskList,
+    EditIcon
 };
